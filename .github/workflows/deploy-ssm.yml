@@ -39,3 +39,12 @@ jobs:
         aws-region: ${{ vars.AWS_REGION || 'ca-central-1' }}
         aws-access-key-id: ${{ inputs.aws-access-key-id }}
         aws-secret-access-key: ${{ secrets.aws-access-key }}
+
+    - name: Clone tm-ansible repo
+      run: |
+        git clone https://github.com/toumoro/tm-ansible.git tm-ansible
+        mv tm-ansible/ansible.cfg .
+
+    - name: Prepare Runner
+      run: |
+        ansible-playbook tm-ansible/playbooks/prepare-github-runner.yml
