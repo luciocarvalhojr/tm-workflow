@@ -11,13 +11,13 @@ on:
       aws-region:
         required: false
         type: string
-      aws-acess-key-id:
+      aws-access-key-id:
         required: true
         type: string
     secrets:
       token:
         required: true
-      aws-acess-key:
+      aws-access-key:
         required: true
 
 jobs:
