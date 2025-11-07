@@ -1,6 +1,6 @@
 # This is a shared workflow to be used across the organisation
 
-name: Deployment
+name: Deployment via SSM
 
 on:
   workflow_call:
