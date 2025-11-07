@@ -9,7 +9,7 @@ on:
         required: true
         type: string
     secrets:
-      personal_access_token:
+      token:
         required: true
 
 jobs:
