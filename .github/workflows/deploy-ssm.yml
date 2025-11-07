@@ -8,15 +8,34 @@ on:
       config-path:
         required: true
         type: string
+      aws-region:
+        required: false
+        type: string
+      aws-acess-key-id:
+        required: true
+        type: string
     secrets:
       token:
         required: true
+      aws-acess-key:
+        required: true
 
 jobs:
-  triage:
+  Deploy:
     runs-on: ubuntu-latest
     steps:
+
+    - name: Checkout client repo
+      uses: actions/checkout@v3
+    
     - uses: actions/labeler@v6
       with:
         repo-token: ${{ secrets.token }}
         configuration-path: ${{ inputs.config-path }}
+        
+    - name: Setup AWS CLI
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-region: ${{ vars.AWS_REGION:- ca-cental-1 }}
+        aws-access-key-id: ${{ vars.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
