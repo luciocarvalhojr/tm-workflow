@@ -14,6 +14,9 @@ on:
       aws-access-key-id:
         required: true
         type: string
+      tm-instance-id:
+        required: true
+        type: string
     secrets:
       token:
         required: true
@@ -25,6 +28,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: serversideup/ansible
+    env:
+      TM_INSTANCE_ID: ${{ inputs.tm-instance-id }}
+
     steps:
 
     - name: Checkout client repo
@@ -50,3 +56,7 @@ jobs:
     - name: Prepare Runner
       run: |
         ansible-playbook tm-ansible/playbooks/prepare-github-runner.yml
+
+    - name: Deploy Docker
+      run: |
+        ansible-playbook -i tm-ansible/inventory/aws_ec2.yml tm-ansible/playbooks/docker-deploy.yml
