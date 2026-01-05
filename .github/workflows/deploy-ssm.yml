@@ -66,3 +66,9 @@ jobs:
         ansible-playbook -i tm-ansible/inventory/aws_ec2.yml \
             tm-ansible/playbooks/docker-deploy.yml \
             -e "ansible_aws_ssm_bucket_name=${AWS_SSM_BUCKET}"
+
+    - name: Deploy Docker
+      run: |
+        ansible-playbook -i tm-ansible/inventory/aws_ec2.yml \
+            tm-ansible/playbooks/traefik-deploy.yml \
+            -e "ansible_aws_ssm_bucket_name=${AWS_SSM_BUCKET}"
