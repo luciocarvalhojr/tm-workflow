@@ -14,6 +14,9 @@ on:
       aws-access-key-id:
         required: true
         type: string
+      aws-ssm-bucket:
+        required: true
+        type: string
       tm-instance-id:
         required: true
         type: string
@@ -30,6 +33,7 @@ jobs:
       image: serversideup/ansible
     env:
       TM_INSTANCE_ID: ${{ inputs.tm-instance-id }}
+      AWS_SSM_BUCKET: ${{ inputs.aws-ssm-bucket }}
 
     steps:
 
