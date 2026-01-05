@@ -59,4 +59,4 @@ jobs:
 
     - name: Deploy Docker
       run: |
-        ansible-playbook -i tm-ansible/inventory/aws_ec2.yml tm-ansible/playbooks/docker-deploy.yml
+        ansible-playbook -i tm-ansible/inventory/aws_ec2.yml tm-ansible/playbooks/docker-deploy.yml -vvv
