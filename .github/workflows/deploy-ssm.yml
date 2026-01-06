@@ -27,10 +27,10 @@ jobs:
     container:
       image: serversideup/ansible
     env:
-      AWS_SSM_BUCKET: ${{ inputs.aws-ssm-bucket }}
-      TM_INSTANCE_ID: ${{ inputs.tm-instance-id }}
-      SERVER_USERNAME: ${{ inputs.server_username }}
-      PROJECT_CLIENT: ${{ inputs.project_client }}
+      AWS_SSM_BUCKET: ${{ vars.AWS_SSM_BUCKET }}
+      TM_INSTANCE_ID: ${{ vars.TM_INSTANCE_ID }}
+      SERVER_USERNAME: ${{ vars.SERVER_USERNAME }}
+      PROJECT_CLIENT: ${{ vars.PROJECT_CLIENT }}
     steps:
     - name: Checkout client repo
       uses: actions/checkout@v3
