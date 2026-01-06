@@ -8,15 +8,7 @@ on:
       environment:
         required: true
         type: string
-      config-path:
-        required: true
-        type: string
-      aws-region:
-        required: false
-        type: string
     secrets:
-      token:
-        required: false
       aws-access-key:
         required: true
 
@@ -37,15 +29,12 @@ jobs:
     - uses: actions/labeler@v6
       with:
         repo-token: ${{ secrets.token }}
-        configuration-path: ${{ inputs.config-path }}
     - name: Setup AWS CLI
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        aws-region: ${{ inputs.aws-region || 'ca-central-1' }}
-        #aws-access-key-id: ${{ inputs.aws-access-key-id }}
+        aws-region: ${{ vars.aws-region || 'ca-central-1' }}
         aws-access-key-id: ${{ vars.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.aws-access-key }}
-        #aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY }}
     - name: Clone tm-ansible repo
       run: |
         git clone https://github.com/toumoro/tm-ansible.git tm-ansible
