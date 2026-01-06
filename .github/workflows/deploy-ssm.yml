@@ -14,9 +14,6 @@ on:
       aws-region:
         required: false
         type: string
-      aws-access-key-id:
-        required: true
-        type: string
       aws-ssm-bucket:
         required: true
         type: string
