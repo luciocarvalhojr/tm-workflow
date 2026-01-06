@@ -44,8 +44,8 @@ jobs:
         aws-region: ${{ inputs.aws-region || 'ca-central-1' }}
         #aws-access-key-id: ${{ inputs.aws-access-key-id }}
         aws-access-key-id: ${{ vars.AWS_ACCESS_KEY_ID }}
-        #aws-secret-access-key: ${{ secrets.aws-access-key }}
-        aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.aws-access-key }}
+        #aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY }}
     - name: Clone tm-ansible repo
       run: |
         git clone https://github.com/toumoro/tm-ansible.git tm-ansible
