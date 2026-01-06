@@ -17,6 +17,8 @@ on:
     secrets:
       token:
         required: false
+      aws-access-key:
+        required: true
 
 jobs:
   Deploy:
