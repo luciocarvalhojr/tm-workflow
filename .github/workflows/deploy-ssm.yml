@@ -23,7 +23,7 @@ on:
       server_username:
         required: true
         type: string
-      projet_client:
+      project_client:
         required: true
         type: string
     secrets:
