@@ -41,7 +41,7 @@ jobs:
       AWS_SSM_BUCKET: ${{ inputs.aws-ssm-bucket }}
       TM_INSTANCE_ID: ${{ inputs.tm-instance-id }}
       SERVER_USERNAME: ${{ inputs.server_username }}
-      PROJET_CLIENT: ${{ inputs.projet_client }}
+      PROJECT_CLIENT: ${{ inputs.project_client }}
     steps:
     - name: Checkout client repo
       uses: actions/checkout@v3
