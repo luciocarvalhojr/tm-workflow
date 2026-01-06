@@ -5,6 +5,9 @@ name: Deployment via SSM
 on:
   workflow_call:
     inputs:
+      environment:
+        required: true
+        type: string
       config-path:
         required: true
         type: string
@@ -35,6 +38,7 @@ on:
 jobs:
   Deploy:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     container:
       image: serversideup/ansible
     env:
