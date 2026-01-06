@@ -76,4 +76,5 @@ jobs:
       run: |
         ansible-playbook -i tm-ansible/inventory/aws_ec2.yml \
             tm-ansible/playbooks/typo3-deploy.yml \
-            -e "ansible_aws_ssm_bucket_name=${AWS_SSM_BUCKET}"
+            -e "ansible_aws_ssm_bucket_name=${AWS_SSM_BUCKET}" \
+            --become
