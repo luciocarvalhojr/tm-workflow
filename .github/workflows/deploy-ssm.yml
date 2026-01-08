@@ -35,6 +35,8 @@ jobs:
         aws-region: ${{ vars.aws-region || 'ca-central-1' }}
         aws-access-key-id: ${{ vars.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.aws-access-key }}
+    - name: Check
+      run: ls -lrt; pwd
     - name: Deploy Docker
       run: |
         ansible-playbook -i tm-ansible/inventory/aws_ec2.yml \
