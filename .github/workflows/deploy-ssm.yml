@@ -37,6 +37,8 @@ jobs:
         aws-secret-access-key: ${{ secrets.aws-access-key }}
     - name: Check
       run: ls -lrt; pwd
+    - name: Check tm-ansible
+      run: find / -iname tm-ansible
     - name: Deploy Docker
       run: |
         ansible-playbook -i tm-ansible/inventory/aws_ec2.yml \
