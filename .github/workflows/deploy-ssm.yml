@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     container:
-      image: ghcr.io/toumoro/tm-ansible:main
+      image: ghcr.io/toumoro/tm-ansible:latest
     env:
       AWS_SSM_BUCKET: ${{ vars.AWS_SSM_BUCKET }}
       TM_INSTANCE_ID: ${{ vars.TM_INSTANCE_ID }}
