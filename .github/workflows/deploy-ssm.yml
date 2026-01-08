@@ -35,22 +35,20 @@ jobs:
         aws-region: ${{ vars.aws-region || 'ca-central-1' }}
         aws-access-key-id: ${{ vars.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.aws-access-key }}
-    - name: Checkout tm-ansible
-      run: cd /ansible
     - name: Deploy Docker
       run: |
-        ansible-playbook -i inventory/aws_ec2.yml \
-            playbooks/docker-deploy.yml \
+        ansible-playbook -i /ansible/inventory/aws_ec2.yml \
+            /ansible/playbooks/docker-deploy.yml \
             -e "ansible_aws_ssm_bucket_name=${AWS_SSM_BUCKET}"
     - name: Deploy Traefik
       run: |
-        ansible-playbook -i inventory/aws_ec2.yml \
-            playbooks/traefik-deploy.yml \
+        ansible-playbook -i /ansible/inventory/aws_ec2.yml \
+            /ansible/playbooks/traefik-deploy.yml \
             -e "ansible_aws_ssm_bucket_name=${AWS_SSM_BUCKET}" \
             --become --become-user ${SERVER_USERNAME} 
     - name: Deploy TYPO3
       run: |
-        ansible-playbook -i inventory/aws_ec2.yml \
-            playbooks/typo3-deploy.yml \
+        ansible-playbook -i /ansible/inventory/aws_ec2.yml \
+            /ansible/playbooks/typo3-deploy.yml \
             -e "ansible_aws_ssm_bucket_name=${AWS_SSM_BUCKET}" \
             --become --become-user ${SERVER_USERNAME}
