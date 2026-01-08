@@ -39,3 +39,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npx semantic-release
+
+      - name: Update major floating tag
+        if: github.event_name == 'push'
+        run: |
+          VERSION=$(git describe --tags --abbrev=0)
+          MAJOR=$(echo "$VERSION" | sed -E 's/^v([0-9]+).*/\1/')
+
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git tag -f v$MAJOR
+          git push origin v$MAJOR --force
