@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     container:
-      image: serversideup/ansible
+      image: ghcr.io/toumoro/tm-ansible:main
     env:
       AWS_SSM_BUCKET: ${{ vars.AWS_SSM_BUCKET }}
       TM_INSTANCE_ID: ${{ vars.TM_INSTANCE_ID }}
@@ -35,13 +35,6 @@ jobs:
         aws-region: ${{ vars.aws-region || 'ca-central-1' }}
         aws-access-key-id: ${{ vars.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.aws-access-key }}
-    - name: Clone tm-ansible repo
-      run: |
-        git clone https://github.com/toumoro/tm-ansible.git tm-ansible
-        mv tm-ansible/ansible.cfg .
-    - name: Prepare Runner
-      run: |
-        ansible-playbook tm-ansible/playbooks/prepare-github-runner.yml
     - name: Deploy Docker
       run: |
         ansible-playbook -i tm-ansible/inventory/aws_ec2.yml \
