@@ -22,6 +22,9 @@ jobs:
     environment: ${{ inputs.environment }}
     container:
       image: ghcr.io/toumoro/tm-ansible:latest
+    permissions:
+      id-token: write
+      contents: read
     env:
       AWS_SSM_BUCKET: ${{ vars.AWS_SSM_BUCKET }}
       TM_INSTANCE_ID: ${{ vars.TM_INSTANCE_ID }}
@@ -42,7 +45,6 @@ jobs:
         role-to-assume: ${{ secrets.aws-deploy-role-arn }}
         role-duration-seconds: 1200
         special-characters-workaround: true
-
     - name: Deploy Docker
       run: |
         ansible-playbook -i /ansible/inventory/aws_ec2.yml \
