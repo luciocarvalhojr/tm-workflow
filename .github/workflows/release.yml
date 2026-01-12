@@ -53,5 +53,7 @@ jobs:
           git config user.email "github-actions@github.com"
 
           git tag -f v$MAJOR
+          git push origin v$MAJOR --force
+
           git tag -f v$MINOR
-          git push origin v$MAJOR v$MINOR --force
+          git push origin v$MINOR --force
