@@ -40,7 +40,7 @@ jobs:
         run: |
           npx semantic-release
 
-      - name: Update major floating tag
+      - name: Update floating tags
         if: github.event_name == 'push'
         run: |
           VERSION=$(git describe --tags --abbrev=0)
