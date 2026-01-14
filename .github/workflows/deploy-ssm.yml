@@ -60,7 +60,7 @@ jobs:
     - name: Deploy Traefik
       run: |
         ansible-playbook -i /ansible/inventory/ssm.ini \
-            /ansible/playbooks/traefik-deploy.yml
+            /ansible/playbooks/traefik-deploy.yml \
             --become --become-user ${SERVER_USERNAME} 
     - name: Deploy TYPO3
       run: |
